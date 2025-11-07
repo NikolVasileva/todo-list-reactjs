@@ -5,7 +5,15 @@ export default function TodoItem({
     title,
     completed
 }) {
+    const classes = [styles["todo-item"]]
+
+    if(completed) {
+        classes.push(styles["todo-completed"])
+    }
+
     return(
-        <li className={completed && styles["todo-completed"]}>{title}</li>
+        // <li className={completed && styles["todo-completed"]}>{title}</li>
+        <li className={classes.join(" ")}>{title}</li>
+
     )
 }
