@@ -15,8 +15,10 @@ export default function TodoList() {
 
     return(
         <ul>{todos.map(todo => <TodoItem 
-            title={todo.title}
             key={todo._id}
+            title={todo.title}
+            _id={todo._id}
+            completed={todo.completed}
             />)}
             </ul>
     )
