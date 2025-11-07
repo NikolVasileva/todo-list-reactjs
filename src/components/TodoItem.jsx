@@ -3,7 +3,8 @@ import styles from "./TodoItem.module.css"
 export default function TodoItem({
     _id,
     title,
-    completed
+    completed,
+    onClick
 }) {
     const classes = [styles["todo-item"]]
 
@@ -13,7 +14,7 @@ export default function TodoItem({
 
     return(
         // <li className={completed && styles["todo-completed"]}>{title}</li>
-        <li className={classes.join(" ")}>{title}</li>
+        <li onClick={() => onClick(_id)} className={classes.join(" ")}>{title}</li>
 
     )
 }
