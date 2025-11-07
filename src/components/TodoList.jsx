@@ -33,7 +33,7 @@ export default function TodoList() {
 
     return (
         <div>
-            <h3>Todo List:</h3>
+            <h2>Todo List:</h2>
             <ul>{todos.map(todo => <TodoItem
                 key={todo._id}
                 title={todo.title}
