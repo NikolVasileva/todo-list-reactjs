@@ -7,12 +7,12 @@ export default function TodoList() {
 
     useEffect(() => {
         fetch("http://localhost:3030/jsonstore/todos")
-          .then(response => response.json())
-          .then(data => {
-            setTodos(Object.values(data))
-          })
-          .catch(err => alert(err.message))
-    },[refresh])
+            .then(response => response.json())
+            .then(data => {
+                setTodos(Object.values(data))
+            })
+            .catch(err => alert(err.message))
+    }, [refresh])
 
     const toggleTodoHandler = (todoId) => {
         const currentTodo = todos.find(todo => todo._id === todoId);
@@ -25,20 +25,23 @@ export default function TodoList() {
             },
             body: JSON.stringify(currentTodo),
         })
-        .then(() => {
-            setRefresh(state => !state)
-        })
-        .catch(err => alert(err.message))
+            .then(() => {
+                setRefresh(state => !state)
+            })
+            .catch(err => alert(err.message))
     }
 
-    return(
-        <ul>{todos.map(todo => <TodoItem 
-            key={todo._id}
-            title={todo.title}
-            _id={todo._id}
-            completed={todo.completed}
-            onClick={toggleTodoHandler}
+    return (
+        <div>
+            <h3>Todo List:</h3>
+            <ul>{todos.map(todo => <TodoItem
+                key={todo._id}
+                title={todo.title}
+                _id={todo._id}
+                completed={todo.completed}
+                onClick={toggleTodoHandler}
             />)}
             </ul>
+        </div>
     )
 }
